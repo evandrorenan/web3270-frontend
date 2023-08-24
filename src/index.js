@@ -9,12 +9,10 @@ import App from './App';
 import reducer from './store/reducer';
 import * as serviceWorker from './serviceWorker';
 
-// Auxiliar variable required by the redux devtools chrome extension. 
+// The Redux DevTools Chrome Extension requires this auxiliary variable 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-// Redux store. 
-// For it to be available for all the application's components the App will be wrapped 
-// by a Provider component, which contains the store.
+// The store will be included in a Provider component to be available all application's components.
 export const myStore = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
 
 ReactDOM.render(

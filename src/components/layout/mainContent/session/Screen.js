@@ -92,5 +92,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-// connect returns a function that receives State and Actions and pass it to Screen component via props.
 export default connect(mapStateToProps, mapDispatchToProps)(Screen);

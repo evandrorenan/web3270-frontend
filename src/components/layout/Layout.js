@@ -19,24 +19,17 @@ class Layout extends Component {
     onclick = (event) => {
         const localstate = Object.assign({}, this.state);
 
-        for (let index = 0; index < localstate.items.length; index++) {
-            if (localstate.items[index].id === event.target.id) {
-                localstate.items[index].isActive = true;
-            } else {
-                localstate.items[index].isActive = false;
-            }
-        }
+        localstate.items = localstate.items.map(item => ({
+            ...item,
+            isActive: item.id === event.target.id
+        }));
         this.setState(localstate);
     }
 
     activeTab = () => {
-        for (let index = 0; index < this.state.items.length; index++) {
-            if (this.state.items[index].isActive === true) {
-                return this.state.items[index].id;
-            }
-        }
-        return "";
-    }
+        const activeItem = this.state.items.find(item => item.isActive === true);
+        return activeItem ? activeItem.id : "";
+    };
 
     render() {
         return (
